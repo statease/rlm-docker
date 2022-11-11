@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+  rlm:
+    build: . 
+    container_name: rlms
+    command:
+      /statease-rlm/rlm
+    volumes:
+      - /root/.rlm:/root/.rlm
+    ports:
+      - 5053:5053
+      - 5054:5054
+      - 5050:5050
