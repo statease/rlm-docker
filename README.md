@@ -46,3 +46,18 @@ the web interface.
 While connected to the remote context you can run `docker ps` to get the container id,
 then `docker exec -t <container_id> bash` to get a shell. Then cd into `statease-rlm`
 and you can look at the license file or debug log.
+
+
+## SSL
+
+There is a docker-compose-ssl.yml that will run RLM with SSL. You'll need certs
+first. The easiest way to get them is to use certbot:
+
+    snap install --classic certbot
+    certbot certonly --standalone -d your_domain
+    mkdir certs
+    cp /etc/letsencrypt/live/your_domain/* certs
+
+Then run the docker compose with the docker-compose-ssl.yml file. You may need
+to mess around with the paths/permissions in the file and in these
+instructions. You may also need to open ports 80/443 to get the cert.

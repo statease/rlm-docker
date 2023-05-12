@@ -1,0 +1,15 @@
+version: '3.2'
+
+services:
+  rlm:
+    build: .
+    container_name: rlms
+    command:
+      /statease-rlm/rlm -sslcert /root/certs/fullchain.pem -sslpriv /root/certs/privkey.pem -ws 443
+    volumes:
+      - /root/.rlm:/root/.rlm
+      - /root/rlm/certs:/root/certs
+    ports:
+      - 443:443
+      - 5053:5053
+      - 5050:5050
